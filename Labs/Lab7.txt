@@ -1,0 +1,81 @@
+#region Using directives
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+#endregion
+
+namespace Classes
+{
+    class Point
+    {
+        private int x, y;
+        private static int objectCount = 0;
+
+        public Point()
+        {
+            this.x = -1;
+            this.y = -1;
+
+            Console.WriteLine("Default constructor called");
+            objectCount++;
+        }
+        public Point(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+            objectCount++;
+            Console.WriteLine($"x:{x}, y:{y}");
+        }
+        public double DistanceTo(Point other)
+        { 
+           int xDiff = this.x - other.x;
+           int yDiff = this.y - other.y;
+           double distance = Math.Sqrt((xDiff * xDiff) + (yDiff * yDiff));
+           Console.WriteLine($"The distance is {distance}");
+           return distance;
+        }   
+        public static int ObjectCount()
+        {
+            return (objectCount);
+        }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Classes
+{
+    class Program
+    {
+        static void doWork()
+        {
+            Point origin = new Point();
+            Point bottomRight = new Point(1336, 768);
+            Point Nicholas = new Point(45, 73);
+            double distance = origin.DistanceTo(bottomRight);
+            double distance2 = Nicholas.DistanceTo(origin);
+            int oc = Point.ObjectCount();
+            Console.WriteLine($"The object count is {oc}");
+            
+    
+        }
+
+        static void Main(string[] args)
+        {
+            try
+            {
+                doWork();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+    }
+}
+

@@ -1,0 +1,199 @@
+sing System;
+
+namespace Exercise2._0
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string lettergrade = GetLetterGrade(75);
+            Console.WriteLine("The letter grade for 100 is {0}", GetLetterGrade(100));
+            Console.WriteLine("The letter grade for 85 is {0}", GetLetterGrade(85));
+            Console.WriteLine($"The letter grade for 75 is {GetLetterGrade(75)}");
+            Console.WriteLine("The letter grade for 65 is {0}", GetLetterGrade(65));
+            Console.WriteLine("The letter grade for 30 is {0}", GetLetterGrade(30));
+        }
+        static string GetLetterGrade(float valuegrade)
+        {
+            string lettergrade = "";
+            if (valuegrade >= 90)
+            {
+                lettergrade = "A";
+            }
+            else if (valuegrade >= 80)
+            {
+                lettergrade = "B";
+            }
+            else if (valuegrade >= 70)
+            {
+                lettergrade = "C";
+            }
+            else if (valuegrade >= 60)
+            {
+                lettergrade = "D";
+            }
+            else
+            {
+                lettergrade = "F";
+            }
+            return lettergrade;
+        }
+    }
+}
+using System;
+
+namespace Exercise2._1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int start = 0;
+            int end = 10;
+            int sum = 0;
+            get_sum(start, end, sum);
+        }
+        private static void get_sum(int start, int end, int sum)
+        {
+            Console.WriteLine("Please enter a value between 0 and 100");
+            string line = Console.ReadLine();
+            int value = 0;
+            try {
+
+                value = int.Parse(line);
+
+                }
+            catch
+            {
+                Console.WriteLine("Invalid user input");
+                value = 0;
+               
+            }
+            finally
+            {
+                Console.WriteLine($"Value is {value}");
+            }
+            if (value < 0 || value > 100)
+            {
+                Console.WriteLine("Input must be greater than or equal to 0 and less than or equal to 100");
+                value = 0;
+                
+            }
+
+            start = start + 1;
+            sum = sum + value;
+            if (start < end)
+                get_sum(start, end, sum);
+            else
+                Console.WriteLine("The average is {0})", sum / 10.0);        
+        }
+    }
+    
+}
+using System;
+
+namespace Exercise2._2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int start = 0;
+            int end = 10;
+            int sum = 0;
+            Console.WriteLine("Enter the number of scores");
+            string line = Console.ReadLine();
+            int.TryParse(line, out end);
+            get_sum(start, end, sum);
+        }
+        private static void get_sum(int start, int end, int sum)
+        {
+            Console.WriteLine("Please enter a value between 0 and 100");
+            string line = Console.ReadLine();
+            int value = 0;
+            try
+            {
+
+                value = int.Parse(line);
+
+            }
+            catch
+            {
+                Console.WriteLine("Invalid user input");
+                value = 0;
+
+            }
+            finally
+            {
+                Console.WriteLine($"Value is {value}");
+            }
+            if (value < 0 || value > 100)
+            {
+                Console.WriteLine("Input must be greater than or equal to 0 and less than or equal to 100");
+                value = 0;
+
+            }
+
+            start = start + 1;
+            sum = sum + value;
+            if (start < end)
+                get_sum(start, end, sum);
+            else
+                Console.WriteLine("The average is {0})", sum / (float) end);
+        }
+    }
+}
+using System;
+
+namespace Exercise2._3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int start = 0;
+            int sum = 0;
+            get_sum(start, sum);
+        }
+        private static void get_sum(int start, int sum)
+        {
+            Console.WriteLine("Please enter a value between 0 and 100 q to quit");
+            string line = Console.ReadLine();
+            bool quit = line == "q";
+            int value = 0;
+            try
+            {
+
+                value = int.Parse(line);
+
+            }
+            catch
+            {
+                Console.WriteLine("Invalid user input");
+                value = 0;
+
+            }
+            finally
+            {
+                Console.WriteLine($"Value is {value}");
+            }
+            if (value < 0 || value > 100)
+            {
+                Console.WriteLine("Input must be greater than or equal to 0 and less than or equal to 100");
+                value = 0;
+
+            }
+            if (quit == true)
+            {
+                Console.WriteLine("The average is {0})", sum / (float)start);
+            }
+            else
+            {
+                start = start + 1;
+                sum = sum + value;
+                get_sum(start, sum);
+            }
+            
+        }
+    }
+}
